@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Portafolio de Jhoimar Osorio: proyectos de desarrollo web, diseño de sitios y lógica de programación.">
+    <meta name="theme-color" content="#183b34">
+    <title>Jhoimar Osorio | Portafolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #17231f;
+            --forest: #183b34;
+            --forest-deep: #102a25;
+            --lime: #d3f36b;
+            --coral: #fa765d;
+            --paper: #f5f7f3;
+            --muted: #64716b;
+            --line: #dce3dc;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--paper);
+            color: var(--ink);
+            font-family: "DM Sans", sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        .brand-mark {
+            font-family: "Space Grotesk", sans-serif;
+        }
+
+        .navbar {
+            background: var(--paper);
+        }
+
+        .brand-photo {
+            border-radius: 50%;
+            flex-shrink: 0;
+            height: 40px;
+            object-fit: cover;
+            object-position: center 30%;
+            width: 40px;
+        }
+
+        .nav-link {
+            color: var(--ink);
+            font-size: .94rem;
+        }
+
+        .nav-link:hover {
+            color: var(--forest);
+        }
+
+        .hero {
+            background-color: var(--forest);
+            background-image: radial-gradient(circle at 82% 18%, rgba(211, 243, 107, .11), transparent 23%), linear-gradient(135deg, var(--forest) 0%, var(--forest-deep) 100%);
+            color: #fff;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero::after {
+            border: 1px solid rgba(255, 255, 255, .09);
+            border-radius: 50%;
+            content: "";
+            height: 460px;
+            position: absolute;
+            right: -170px;
+            top: -250px;
+            width: 460px;
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        .eyebrow {
+            color: var(--lime);
+            font-size: .78rem;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: clamp(3.2rem, 8vw, 6.7rem);
+            letter-spacing: 0;
+            line-height: .98;
+            max-width: 720px;
+        }
+
+        .hero h1 span {
+            color: var(--lime);
+        }
+
+        .hero-copy {
+            color: #d6e0d9;
+            font-size: 1.1rem;
+            max-width: 510px;
+        }
+
+        .btn-lime {
+            background: var(--lime);
+            border: 1px solid var(--lime);
+            color: var(--forest-deep);
+            font-weight: 700;
+        }
+
+        .btn-lime:hover {
+            background: #e0ff88;
+            border-color: #e0ff88;
+            color: var(--forest-deep);
+        }
+
+        .btn-outline-light {
+            font-weight: 600;
+        }
+
+        .hero-visual {
+            background: #fff;
+            border: 1px solid rgba(255, 255, 255, .18);
+            border-radius: 8px;
+            box-shadow: 18px 18px 0 rgba(7, 24, 20, .3);
+            margin-inline: auto;
+            max-width: 330px;
+            overflow: hidden;
+            transform: rotate(2deg);
+            width: 100%;
+        }
+
+        .hero-visual img {
+            aspect-ratio: 1;
+            display: block;
+            height: auto;
+            object-fit: contain;
+            width: 100%;
+        }
+
+        .section-kicker {
+            color: #55816f;
+            font-size: .76rem;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            font-size: clamp(2.2rem, 5vw, 3.6rem);
+            letter-spacing: 0;
+        }
+
+        .projects-intro {
+            color: var(--muted);
+            max-width: 590px;
+        }
+
+        .project-card {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            height: 100%;
+            overflow: hidden;
+            transition: border-color .2s ease, transform .2s ease;
+        }
+
+        .project-card:hover {
+            border-color: #9eb4a3;
+            transform: translateY(-4px);
+        }
+
+        .project-image {
+            background: #e8eee8;
+            height: 235px;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            transition: transform .35s ease;
+            width: 100%;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.025);
+        }
+
+        .project-art {
+            align-items: center;
+            background: var(--forest);
+            color: #fff;
+            display: flex;
+            height: 100%;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-art::before,
+        .project-art::after {
+            border: 1px solid rgba(255, 255, 255, .16);
+            border-radius: 50%;
+            content: "";
+            height: 220px;
+            position: absolute;
+            width: 220px;
+        }
+
+        .project-art::after {
+            height: 290px;
+            width: 290px;
+        }
+
+        .project-art .art-symbol {
+            color: var(--lime);
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 5rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-art--coral {
+            background: #f0e6dc;
+            color: var(--ink);
+        }
+
+        .project-art--coral::before,
+        .project-art--coral::after {
+            border-color: rgba(23, 35, 31, .14);
+        }
+
+        .project-art--coral .art-symbol {
+            color: var(--coral);
+        }
+
+        .project-body {
+            padding: 24px;
+        }
+
+        .project-index {
+            color: #7c8981;
+            font-size: .75rem;
+            font-weight: 700;
+            letter-spacing: .1em;
+        }
+
+        .project-body h3 {
+            font-size: 1.38rem;
+            letter-spacing: 0;
+        }
+
+        .project-body p {
+            color: var(--muted);
+            min-height: 72px;
+        }
+
+        .tech-tag {
+            background: #edf2eb;
+            border-radius: 3px;
+            color: #395447;
+            font-size: .75rem;
+            font-weight: 600;
+            padding: 5px 9px;
+        }
+
+        .project-link {
+            color: var(--forest);
+            font-size: .93rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .project-link:hover {
+            color: #466c56;
+        }
+
+        .about-band {
+            background: #e8eee7;
+        }
+
+        .about-mark {
+            color: var(--coral);
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 5rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .about-copy {
+            color: #4e5e55;
+            max-width: 670px;
+        }
+
+        .contact-band {
+            background: var(--coral);
+        }
+
+        .contact-band h2 {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            letter-spacing: 0;
+        }
+
+        .btn-ink {
+            background: var(--ink);
+            border-color: var(--ink);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .btn-ink:hover {
+            background: #30423a;
+            border-color: #30423a;
+            color: #fff;
+        }
+
+        footer {
+            background: var(--forest-deep);
+            color: #d6e0d9;
+        }
+
+        footer a {
+            color: var(--lime);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #e7ffab;
+        }
+
+        @keyframes rise-in {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-copy-block {
+            animation: rise-in .7s ease-out both;
+        }
+
+        .hero-visual {
+            animation: rise-in .7s .12s ease-out both;
+        }
+
+        @media (max-width: 767.98px) {
+            .hero {
+                padding-bottom: 4.5rem !important;
+                padding-top: 4.5rem !important;
+            }
+
+            .project-image {
+                height: 210px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: .01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md py-3" aria-label="Navegación principal">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" href="#inicio"
+                aria-label="Jhoimar Osorio, inicio">
+                <img class="brand-photo" src="img/foto-perfil.png" alt="" width="40" height="40">
+                <span>Jhoimar Osorio</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#portfolioNav"
+                aria-controls="portfolioNav" aria-expanded="false" aria-label="Abrir menú">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="portfolioNav">
+                <ul class="navbar-nav ms-auto align-items-md-center gap-md-3">
+                    <li class="nav-item"><a class="nav-link" href="#proyectos">Proyectos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#sobre-mi">Sobre mí</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                    <li class="nav-item"><a class="btn btn-dark btn-sm px-3 mt-2 mt-md-0"
+                            href="https://github.com/JhoimarOsorio" target="_blank" rel="noopener noreferrer"><i
+                                class="bi bi-github me-2" aria-hidden="true"></i>Mi GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero py-5" id="inicio">
+            <div class="container hero-inner py-lg-5">
+                <div class="row align-items-center gy-5">
+                    <div class="col-lg-7">
+                        <div class="hero-copy-block">
+                            <p class="eyebrow mb-3">Portafolio · Desarrollo web</p>
+                            <h1 class="mb-4">Ideas que toman <span>forma.</span></h1>
+                            <p class="hero-copy mb-4">Hola, soy Jhoimar. Aquí reúno proyectos de desarrollo web y
+                                ejercicios de lógica que representan mi proceso de aprendizaje.</p>
+                            <div class="d-flex flex-wrap gap-3">
+                                <a class="btn btn-lime px-4 py-2" href="#proyectos">Ver proyectos <i
+                                        class="bi bi-arrow-down-right ms-2" aria-hidden="true"></i></a>
+                                <a class="btn btn-outline-light px-4 py-2" href="https://github.com/JhoimarOsorio"
+                                    target="_blank" rel="noopener noreferrer"><i class="bi bi-github me-2"
+                                        aria-hidden="true"></i>GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="hero-visual">
+                            <img src="img/images-3.jpeg" alt="Logotipo de RIWI: Be a coder, change your world."
+                                width="400" height="400" fetchpriority="high">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5" id="proyectos">
+            <div class="container py-lg-5">
+                <div class="row align-items-end justify-content-between gy-3 mb-4 mb-lg-5">
+                    <div class="col-lg-7">
+                        <p class="section-kicker mb-2">Selección de trabajo</p>
+                        <h2 class="section-title mb-2">Proyectos</h2>
+                        <p class="projects-intro mb-0">Una muestra de sitios, prácticas de programación y retos que he
+                            desarrollado.</p>
+                    </div>
+                    <div class="col-lg-auto"><a class="project-link"
+                            href="https://github.com/JhoimarOsorio?tab=repositories" target="_blank"
+                            rel="noopener noreferrer">Ver todos en GitHub <i class="bi bi-arrow-up-right ms-1"
+                                aria-hidden="true"></i></a></div>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-6">
+                        <article class="project-card">
+                            <a class="project-image d-block" href="https://jhoimarosorio.github.io/rueda-libre/"
+                                target="_blank" rel="noopener noreferrer" aria-label="Abrir demo de Rueda Libre">
+                                <img src="https://raw.githubusercontent.com/JhoimarOsorio/rueda-libre/main/capturas/rueda-nocturna-escritorio.jpg"
+                                    alt="Vista de escritorio de Rueda Nocturna, proyecto de Rueda Libre" loading="lazy">
+                            </a>
+                            <div class="project-body">
+                                <div class="d-flex justify-content-between mb-3"><span class="project-index">01 / SITIO
+                                        WEB</span><i class="bi bi-bicycle fs-5 text-success" aria-hidden="true"></i>
+                                </div>
+                                <h3>Rueda Libre</h3>
+                                <p>Sitio informativo para un servicio de alquiler de bicicletas en Medellín, con páginas
+                                    de servicios, tarifas y reservas, además de la campaña Rueda Nocturna.</p>
+                                <div class="d-flex flex-wrap gap-2 mb-4"><span class="tech-tag">HTML</span><span
+                                        class="tech-tag">CSS</span><span class="tech-tag">JavaScript</span><span
+                                        class="tech-tag">Bootstrap</span></div>
+                                <div class="d-flex flex-wrap gap-3">
+                                    <a class="project-link" href="https://jhoimarosorio.github.io/rueda-libre/"
+                                        target="_blank" rel="noopener noreferrer">Ver sitio <i
+                                            class="bi bi-arrow-up-right ms-1" aria-hidden="true"></i></a>
+                                    <a class="project-link" href="https://github.com/JhoimarOsorio/rueda-libre"
+                                        target="_blank" rel="noopener noreferrer">Ver repositorio <i
+                                            class="bi bi-github ms-1" aria-hidden="true"></i></a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-lg-6">
+                        <article class="project-card">
+                            <a class="project-image d-block text-decoration-none"
+                                href="https://github.com/JhoimarOsorio/Portafolio-sesion-1" target="_blank"
+                                rel="noopener noreferrer" aria-label="Ver repositorio de actividades de la clase de IA">
+                                <span class="project-art"><span class="art-symbol">&lt;/&gt;</span></span>
+                            </a>
+                            <div class="project-body">
+                                <div class="d-flex justify-content-between mb-3"><span class="project-index">02 /
+                                        CLASE DE IA</span><i class="bi bi-braces fs-5 text-danger"
+                                        aria-hidden="true"></i>
+                                </div>
+                                <h3>Actividades de la clase de IA</h3>
+                                <p>Ejercicios de algoritmos y una página web creada con herramientas de inteligencia
+                                    artificial durante las actividades de clase.</p>
+                                <div class="d-flex flex-wrap gap-2 mb-4"><span class="tech-tag">HTML</span><span
+                                        class="tech-tag">PSeInt</span><span class="tech-tag">Algoritmos</span></div>
+                                <a class="project-link" href="https://github.com/JhoimarOsorio/Portafolio-sesion-1"
+                                    target="_blank" rel="noopener noreferrer">Ver repositorio <i
+                                        class="bi bi-arrow-up-right ms-1" aria-hidden="true"></i></a>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-lg-6">
+                        <article class="project-card">
+                            <a class="project-image d-block text-decoration-none"
+                                href="https://github.com/JhoimarOsorio/Algoriitmia-1" target="_blank"
+                                rel="noopener noreferrer" aria-label="Ver repositorio Algoritmia 1">
+                                <span class="project-art project-art--coral"><span class="art-symbol">{ }</span></span>
+                            </a>
+                            <div class="project-body">
+                                <div class="d-flex justify-content-between mb-3"><span class="project-index">03 /
+                                        LÓGICA</span><i class="bi bi-diagram-3 fs-5 text-danger" aria-hidden="true"></i>
+                                </div>
+                                <h3>Algoritmia 1</h3>
+                                <p>Prácticas de lógica de programación: cálculos, tablas de decisión, pruebas de
+                                    escritorio y ejercicios con ciclos y subprocesos.</p>
+                                <div class="d-flex flex-wrap gap-2 mb-4"><span class="tech-tag">PSeInt</span><span
+                                        class="tech-tag">Lógica</span><span class="tech-tag">Diagramas</span></div>
+                                <a class="project-link" href="https://github.com/JhoimarOsorio/Algoriitmia-1"
+                                    target="_blank" rel="noopener noreferrer">Ver repositorio <i
+                                        class="bi bi-arrow-up-right ms-1" aria-hidden="true"></i></a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-band py-5" id="sobre-mi">
+            <div class="container py-lg-4">
+                <div class="row align-items-center g-4">
+                    <div class="col-md-3">
+                        <div class="about-mark" aria-hidden="true">JO.</div>
+                    </div>
+                    <div class="col-md-9">
+                        <p class="section-kicker mb-2">Un poco sobre mí</p>
+                        <h2 class="h2 mb-3">Aprender, construir, mejorar.</h2>
+                        <p class="about-copy mb-0">Estoy desarrollando mis habilidades en programación y desarrollo web.
+                            En este espacio comparto proyectos prácticos, desde mis primeros ejercicios de lógica hasta
+                            sitios web completos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-band py-5" id="contacto">
+            <div class="container py-lg-4">
+                <div class="row align-items-center gy-4">
+                    <div class="col-lg-8">
+                        <p class="text-uppercase fw-bold small mb-2">Contacto</p>
+                        <h2 class="mb-0">¿Conectamos en GitHub?</h2>
+                    </div>
+                    <div class="col-lg-4 text-lg-end"><a class="btn btn-ink px-4 py-3"
+                            href="https://github.com/JhoimarOsorio" target="_blank" rel="noopener noreferrer"><i
+                                class="bi bi-github me-2" aria-hidden="true"></i>Visitar mi perfil</a></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-4">
+        <div class="container d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-2">
+            <span>© 2026 Jhoimar Osorio</span>
+            <a href="https://github.com/JhoimarOsorio" target="_blank" rel="noopener noreferrer">GitHub <i
+                    class="bi bi-arrow-up-right ms-1" aria-hidden="true"></i></a>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
